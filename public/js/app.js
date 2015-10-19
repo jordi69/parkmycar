@@ -1,7 +1,7 @@
 $(document).ready(function() {
-	$('#contact').on('click', function() {
-    $("#overlay").show();
-    console.log("hey");
-  });
+    $('#headerInloggen p').click(function(e) {  
+        $("#overlay").show();
+    	console.log("hey");
+    });
 });
 

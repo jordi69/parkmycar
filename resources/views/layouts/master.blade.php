@@ -23,8 +23,7 @@
     <div class="rightHeader">
     	<!-- INLOGGEN -->
     	<div class="headerInloggen">
-    	<p>Inloggen</p>
-       		<!--<a href="/auth/login">Inloggen</a>-->
+       		<a href="/auth/login">Inloggen</a>
     	</div>
 
     	<!-- AANMELDEN -->
@@ -46,7 +45,6 @@
 			<a href="/auth/login">Login</a>
     		<a href="/auth/register">Register</a>
     		<a href="/">Home</a>
-    		<a href="/auth/logout">Logout</a>
 			@yield('content')
 		</div>
 	</div>
