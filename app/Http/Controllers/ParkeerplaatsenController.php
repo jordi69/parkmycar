@@ -15,7 +15,7 @@ class ParkeerplaatsenController extends Controller
      */
     public function index()
     {
-        //
+        return view('parking/overzicht');
     }
 
     /**
@@ -25,7 +25,7 @@ class ParkeerplaatsenController extends Controller
      */
     public function create()
     {
-        //
+       return view('parking/add_parkeerplaats');
     }
 
     /**
@@ -36,7 +36,32 @@ class ParkeerplaatsenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $validator = Validator::make($request->all(), [
+            'prkplstraat' => 'required|max:255',
+            'prkplstraatnummer' => 'required',
+            'prkplgemeente' => 'required',
+            'Prijs' => 'required', //max 2 cijfers na komme
+            'BeschikbaarStarttijd' => 'required',
+            'BeschikbaarStoptijd' => 'required'
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('parkeerplaatsen/create') //create van parkeerplaats
+                        ->withErrors($validator)
+                        ->withInput();
+        }else
+        {
+            return Parkeerplaats::create([
+                'prkplstraat' => $request['prkplstraat'],
+                'prkplstraatnummer' => $request['prkplstraatnummer'],
+                'prkplgemeente' => $request['prkplgemeente'],
+                'Prijs' => $request['Prijs'],
+                'BeschikbaarStarttijd' => $request['BeschikbaarStarttijd'],
+                'BeschikbaarStoptijd' => $request['BeschikbaarStoptijd']
+            ]);
+        }
+
     }
 
     /**
