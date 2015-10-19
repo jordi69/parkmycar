@@ -1,0 +1,30 @@
+Users :
+Voornaam
+Achternaam
+Gebruikersnaam
+Wachtwoord
+E-mail
+
+Parkeerplaats : 
+Locatie
+Prijs
+BeschikbaarStarttijd
+BeschikbaarStoptijd
+
+Parkeren : 
+Huurder
+Uitlener
+Parkeerplaats
+Startijd
+Stoptijd
+
+Verhalen :
+Huurder
+Uitlener
+Verhaal
+
+Rating :
+Huurder
+Uitlener
+numSterren
+Commentaar
