@@ -9,6 +9,7 @@
 			<a href="/auth/login">Login</a>
     		<a href="/auth/register">Register</a>
     		<a href="/">Home</a>
+    		<a href="/auth/logout">Logout</a>
 			@yield('content')
 		</div>
 	</div>

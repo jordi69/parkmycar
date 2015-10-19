@@ -4,10 +4,25 @@
     {!! csrf_field() !!}
 
     <div>
-        Name
-        <input type="text" name="name" value="{{ old('name') }}">
+        voornaam
+        <input type="text" name="voornaam" value="{{ old('voornaam') }}">
     </div>
-
+    <div>
+        achternaam
+        <input type="text" name="achternaam" value="{{ old('achternaam') }}">
+    </div>
+    <div>
+        straat
+        <input type="text" name="straatnaam" value="{{ old('straatnaam') }}">
+    </div>
+    <div>
+        huisnummer
+        <input type="text" name="huisnummer" value="{{ old('huisnummer') }}">
+    </div>
+    <div>
+        woonplaats
+        <input type="text" name="woonplaats" value="{{ old('woonplaats') }}">
+    </div>
     <div>
         Email
         <input type="email" name="email" value="{{ old('email') }}">

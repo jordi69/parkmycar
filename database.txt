@@ -1,12 +1,17 @@
 Users :
 Voornaam
 Achternaam
-Gebruikersnaam
+straatnaam
+huisnummer
+woonplaats
 Wachtwoord
 E-mail
 
 Parkeerplaats : 
-Locatie
+prkplid
+prkplstraat
+prkplstraatnummer
+prkplgemeente
 Prijs
 BeschikbaarStarttijd
 BeschikbaarStoptijd
