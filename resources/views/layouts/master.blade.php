@@ -45,7 +45,8 @@
 			<a href="/auth/login">Login</a>
     		<a href="/auth/register">Register</a>
     		<a href="/">Home</a>
-			@yield('content')
+    		<a href="/auth/logout">Logout</a>
+    		<a href="/parkeerplaatsen/create">voeg parkeerplaats toe</a>
 		</div>
 	</div>
 </body>
