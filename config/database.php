@@ -55,7 +55,7 @@ return [
         'mysql' => [
             'driver'    => 'mysql',
             'host'      => 'localhost',
-            'database'  => 'phpmyadmin',
+            'database'  => 'parkmycar',
             'username'  => 'root',
             'password'  => '',
             'charset'   => 'utf8',
