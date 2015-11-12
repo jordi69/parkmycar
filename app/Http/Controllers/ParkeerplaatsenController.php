@@ -75,6 +75,11 @@ class ParkeerplaatsenController extends Controller
         //
     }
 
+    public function search()
+    {
+        //
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
