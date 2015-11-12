@@ -120,6 +120,27 @@ $(function(){
     </div>
 </header>
 <body>
+<div class="searchbar">
+<div class="searchitems">
+<form method="POST" action="/auth/register">
+    {!! csrf_field() !!}
+    @if (count($errors))
+    <ul>
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+    </ul>
+    @endif
+    <div>
+        <input type="text" name="plaats" id="geocomplete" class="searchPlaats" placeholder="Waar wil je parkeren?" value="{{ old('voornaam') }}">
+        <input type="text" onclick="this.type='time';" name="tijd" placeholder="Welk uur?"  class="searchTijd" value="{{ old('achternaam') }}">
+        <input type="submit" value="ZOEKEN" id="searchButton">
+        <input id="latitude" type="text" name="latitude" hidden="true">
+        <input id="longitude" type="text" name="longitude" hidden="true">
+    </div>
+</form>
+</div>
+</div>
 	<div class="container">
 		<!-- <div class="top">
     		<a href="/">Home</a>
