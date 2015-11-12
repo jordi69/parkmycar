@@ -94,9 +94,16 @@ $('.cross').click(function(e){
 <div class="cross">
  X
 </div>
+
 <form method="POST" action="/auth/register">
     {!! csrf_field() !!}
-
+    @if (count($errors))
+    <ul>
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+    </ul>
+    @endif
     <div>
         <input type="text" name="voornaam" placeholder="Voornaam" value="{{ old('voornaam') }}">
     </div>
@@ -134,9 +141,16 @@ $('.cross').click(function(e){
 <div class="cross">
  X
 </div>
+
 <form method="POST" action="/auth/login">
     {!! csrf_field() !!}
-
+    @if (count($errors))
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
     <div>
         <input type="email" name="email" value="{{ old('email') }}" placeholder="E-mail">
     </div>

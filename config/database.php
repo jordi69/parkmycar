@@ -55,9 +55,9 @@ return [
         'mysql' => [
             'driver'    => 'mysql',
             'host'      => 'localhost',
-            'database'  => 'parkmycar',
+            'database'  => 'parkmycarDB',
             'username'  => 'root',
-            'password'  => '',
+            'password'  => 'skater',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
