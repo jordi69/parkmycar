@@ -4,11 +4,24 @@
 	<title>Park My Car</title>
 	<link rel="stylesheet" href="/css/style.css">
 	<link href='http://fonts.googleapis.com/css?family=Righteous|Montserrat:700' rel='stylesheet' type='text/css'>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+  <script src="/js/geocomplete.js"></script>
 </head>
 <div class="overlay">
 <script>
 $(document).ready(function(){
+
+  $('#datepicker').datepicker({ dateFormat: 'dd MM yy' });
+    //get language
+  var langage = (navigator.language || navigator.browserLanguage).split('-')[0];
+
+  //change locale datepicker
+  $.datepicker.setDefaults($.datepicker.regional[langage]);
+
+
 $('.dlgAanmelden').click(function(e){
     $(".registerForm").fadeIn(100);
     $(".loginForm").fadeOut(100);
@@ -30,6 +43,35 @@ $('.cross').click(function(e){
     $(".loginForm").fadeOut(100);
     $(".toevoegenForm").fadeOut(100);
 });
+
+$(function(){
+        
+        var options = {
+          map: ".map_canvas"
+        };
+        
+        $("#geocomplete").geocomplete(options)
+          .bind("geocode:result", function(event, result){
+            $("#latitude").val(result.geometry.location.lat());
+            $("#longitude").val(result.geometry.location.lng());
+          })
+          .bind("geocode:error", function(event, status){
+            $.log("ERROR: " + status);
+          })
+          .bind("geocode:multiple", function(event, results){
+            $.log("Multiple: " + results.length + " results found");
+          });
+        
+        $("#find").click(function(){
+          $("#geocomplete").trigger("geocode");
+        });
+        
+        $("#examples a").click(function(){
+          $("#geocomplete").val($(this).text()).trigger("geocode");
+          return false;
+        });
+        
+      });
 });
 </script>
 <header>
@@ -173,20 +215,32 @@ $('.cross').click(function(e){
     {!! csrf_field() !!}
 
    <div>
-        <input type="text" name="prkplstraat" value="{{ old('prkplstraat') }}" placeholder="Plaats">
+        <input id="geocomplete" type="text" name="prkplstraat" value="{{ old('prkplstraat') }}" placeholder="Plaats">
+    </div>
+    <div>
+        <input id="latitude" type="text" name="latitude" hidden="true">
+    </div>
+    <div>
+        <input id="longitude" type="text" name="longitude" hidden="true">
     </div>
     <div>
         <input type="text" name="Prijs" value="{{ old('Prijs') }}" placeholder="Prijs / uur">
     </div>
     <div>
-        <input type="datetime" name="BeschikbaarStarttijd" value="{{ old('BeschikbaarStarttijd') }}" placeholder="StartTijd">
+        <input type="datetime" id="datepicker" name="BeschikbaarStartdatum" value="{{ old('BeschikbaarStarttijd') }}" placeholder="Start Datum">
+    </div>
+
+     <div>
+        <input type="text" onclick="this.type='time';" name="BeschikbaarStarttijd" value="{{ old('BeschikbaarStarttijd') }}" placeholder="Start Tijd">
     </div>
     <div>
-        <input type="datetime" name="BeschikbaarStoptijd" value="{{ old('BeschikbaarStoptijd') }}" placeholder="Hoelang (in uren)">
+        <input type="text" onclick="this.type='time';"  name="BeschikbaarStoptijd" value="{{ old('BeschikbaarStoptijd') }}" placeholder="Stop Tijd">
     </div>
     <div>
         <input type="submit" value="Toevoegen">
     </div>
 </form>
+
+<div class="map_canvas"></div>
 </div>
 </html>

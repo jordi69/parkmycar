@@ -173,6 +173,19 @@ input[type=datetime]{
 	margin-bottom: 20px;
 }
 
+input[type=time]{
+	width: 55%;
+	height: 50px;
+	font-size: 15px;
+	background: #E0E0E0;
+	color: #424242;
+	text-align: center;
+	border:none;
+	border-radius: 3px;
+	font-family: 'Helvetica Neue', Helvetica, sans-serif;
+	margin-bottom: 20px;
+}
+
 input[type=password]{
 	width: 55%;
 	height: 50px;
@@ -250,4 +263,10 @@ input[type=password]{
 	padding-top: 10px;
 	padding-right: 10px;
 	cursor: pointer;
+}
+
+input[type=time]::-webkit-clear-button,
+input[type=time]::-webkit-outer-spin-button,
+input[type=time]::-webkit-inner-spin-button {
+    display:none;
 }
