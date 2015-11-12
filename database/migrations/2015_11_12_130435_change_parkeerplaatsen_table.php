@@ -13,9 +13,13 @@ class ChangeParkeerplaatsenTable extends Migration
     public function up()
     {
         Schema::table('parkeerplaatsen', function (Blueprint $table) {
-            $table->renameColumn('prkplstraat', 'adres');
+            $table->dropColumn('prkplstraat');
             $table->dropColumn('prkplstraatnummer');
             $table->dropColumn('prkplgemeente');
+            $table->text('adres');
+            $table->text('latitude');
+            $table->text('longitude');
+            $table->date('BeschikbaarStartdatum');
 
         });
     }
@@ -28,7 +32,7 @@ class ChangeParkeerplaatsenTable extends Migration
     public function down()
     {
         Schema::table('parkeerplaatsen', function (Blueprint $table) {
-            //
+            $table->dropColumn(['adres', 'latitude', 'longitude',"BeschikbaarStartdatum"]);
         });
     }
 }

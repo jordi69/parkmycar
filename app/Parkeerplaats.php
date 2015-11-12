@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Widget extends Model
+class Parkeerplaats extends Model
 {
    protected $table = 'parkeerplaatsen';
 
-   protected $fillable = ['prkplstraat','prkplstraatnummer','prkplgemeente','Prijs','BeschikbaarStarttijd', 'BeschikbaarStoptijd'];
+   protected $fillable = ['adres','latitude','longitude','Prijs','BeschikbaarStartdatum', 'BeschikbaarStarttijd','BeschikbaarStoptijd'];
 
 }

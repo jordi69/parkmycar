@@ -232,7 +232,7 @@ $(function(){
 <div class="cross">
  X
 </div>
-<form method="POST" action="/parkeerplaats/store">
+<form method="POST" action="/parkeerplaatsen">
     {!! csrf_field() !!}
 
      @if (count($errors))
@@ -243,7 +243,7 @@ $(function(){
     </ul>
     @endif
    <div>
-        <input id="geocomplete" type="text" name="prkplstraat" value="{{ old('prkplstraat') }}" placeholder="Plaats">
+        <input id="geocomplete" type="text" name="adres" value="{{ old('adres') }}" placeholder="Plaats">
     </div>
     <div>
         <input id="latitude" type="text" name="latitude" hidden="true">
@@ -255,7 +255,7 @@ $(function(){
         <input type="text" name="Prijs" value="{{ old('Prijs') }}" placeholder="Prijs / uur">
     </div>
     <div>
-        <input type="datetime" id="datepicker" name="BeschikbaarStartdatum" value="{{ old('BeschikbaarStarttijd') }}" placeholder="Start Datum">
+        <input type="datetime" id="datepicker" name="BeschikbaarStartdatum" value="{{ old('BeschikbaarStartdatum') }}" placeholder="Start Datum">
     </div>
 
      <div>

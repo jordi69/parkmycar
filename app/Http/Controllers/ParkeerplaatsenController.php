@@ -36,8 +36,23 @@ class ParkeerplaatsenController extends Controller
      */
     public function store(Request $request)
     {
-         $validator = Validator::make($request->all(), [
-            'prkplstraat' => 'required|max:255',
+
+        dd($request->all());
+        $input =$request->all();
+        Parkeerplaats::create($input);  
+
+        /*$parkeerplaats = new ParkeerplaatsenController;
+        $parkeerplaats->adres =$request['adres'];
+        $parkeerplaats->latitude =$request['latitude'];
+        $parkeerplaats->longitude =$request['longitude'];
+        $parkeerplaats->Prijs =$request['Prijs'];
+        $parkeerplaats->BeschikbaarStartdatum =$request['BeschikbaarStartdatum'];
+        $parkeerplaats->BeschikbaarStarttijd =$request['BeschikbaarStarttijd'];
+        $parkeerplaats->BeschikbaarStoptijd =$request['BeschikbaarStoptijd'];
+        $parkeerplaats->save();*/
+
+         /*$validator = Validator::make($request->all(), [
+            'adres' => 'required|max:255',
             'latitude' => 'required',
             'longitude' => 'required',
             'Prijs' => 'required', //max 2 cijfers na komme
@@ -45,23 +60,37 @@ class ParkeerplaatsenController extends Controller
             'BeschikbaarStarttijd' => 'required',
             'BeschikbaarStoptijd' => 'required'
 
-        ]);
+        ]);*/
+         
 
-        if ($validator->fails()) {
+        /*if ($validator->fails()) {
             return redirect('parkeerplaatsen/create') //create van parkeerplaats
                         ->withErrors($validator)
                         ->withInput();
         }else
         {
-            return Parkeerplaats::create([
-                'prkplstraat' => $request['prkplstraat'],
-                'prkplstraatnummer' => $request['prkplstraatnummer'],
-                'prkplgemeente' => $request['prkplgemeente'],
-                'Prijs' => $request['Prijs'],
+            return DB::table('parkeerplaatsen')->insert([
+            'adres' => $request['adres'],
+            'latitude' => $request['latitude'],
+            'longitude' => $request['longitude'],
+            'Prijs' => $request['Prijs'],
+                'BeschikbaarStartdatum' => $request['BeschikbaarStartdatum'],
                 'BeschikbaarStarttijd' => $request['BeschikbaarStarttijd'],
                 'BeschikbaarStoptijd' => $request['BeschikbaarStoptijd']
             ]);
-        }
+        ]);Parkeerplaats::create([
+                'adres' => $request['adres'],
+                'latitude' => $request['latitude'],
+                'longitude' => $request['longitude'],
+                'Prijs' => $request['Prijs'],
+                'BeschikbaarStartdatum' => $request['BeschikbaarStartdatum'],
+                'BeschikbaarStarttijd' => $request['BeschikbaarStarttijd'],
+                'BeschikbaarStoptijd' => $request['BeschikbaarStoptijd']
+            ]);*/
+
+
+        Session::flash('message', 'Successfully created parkeerplaats!');
+        return Redirect::to('/');
 
     }
 
