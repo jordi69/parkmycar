@@ -12,15 +12,23 @@ $(document).ready(function(){
 $('.dlgAanmelden').click(function(e){
     $(".registerForm").fadeIn(100);
     $(".loginForm").fadeOut(100);
+    $(".toevoegenForm").fadeOut(100);
 
 });
 $('.dlgLogin').click(function(e){
     $(".loginForm").fadeIn(100);
     $(".registerForm").fadeOut(100);
+    $(".toevoegenForm").fadeOut(100);
+});
+$('.dlgToevoegen').click(function(e){
+    $(".toevoegenForm").fadeIn(100);
+    $(".registerForm").fadeOut(100);
+    $(".loginForm").fadeOut(100);
 });
 $('.cross').click(function(e){
     $(".registerForm").fadeOut(100);
     $(".loginForm").fadeOut(100);
+    $(".toevoegenForm").fadeOut(100);
 });
 });
 </script>
@@ -36,7 +44,19 @@ $('.cross').click(function(e){
        		<a href="/help">Help</a>
     	</div>
 	</div>
+@if(Auth::check())
+   <div class="rightHeader">
+      <!-- INLOGGEN -->
+      <div class="headerToevoegen">
+          <a class="dlgToevoegen">Parkeerplaats</a>
+      </div>
 
+      <!-- AANMELDEN -->
+      <div class="headerAanmelden">
+          <a class="dlgProfiel">Mijn Profiel</a>
+      </div>
+    </div>
+@else
     <div class="rightHeader">
     	<!-- INLOGGEN -->
     	<div class="headerInloggen">
@@ -48,6 +68,7 @@ $('.cross').click(function(e){
        		<a class="dlgAanmelden">Aanmelden</a>
     	</div>
     </div>
+@endif
 
     <!-- TITLE -->
     <div class="logo">
@@ -126,6 +147,31 @@ $('.cross').click(function(e){
 
     <div>
         <input type="submit" value="LOGIN">
+    </div>
+</form>
+</div>
+
+<div class="toevoegenForm">
+<div class="cross">
+ X
+</div>
+<form method="POST" action="/parkeerplaats/store">
+    {!! csrf_field() !!}
+
+   <div>
+        <input type="text" name="prkplstraat" value="{{ old('prkplstraat') }}" placeholder="Plaats">
+    </div>
+    <div>
+        <input type="text" name="Prijs" value="{{ old('Prijs') }}" placeholder="Prijs / uur">
+    </div>
+    <div>
+        <input type="datetime" name="BeschikbaarStarttijd" value="{{ old('BeschikbaarStarttijd') }}" placeholder="StartTijd">
+    </div>
+    <div>
+        <input type="datetime" name="BeschikbaarStoptijd" value="{{ old('BeschikbaarStoptijd') }}" placeholder="Hoelang (in uren)">
+    </div>
+    <div>
+        <input type="submit" value="Toevoegen">
     </div>
 </form>
 </div>

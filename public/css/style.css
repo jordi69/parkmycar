@@ -160,6 +160,19 @@ input[type=email]{
 	margin-bottom: 20px;
 }
 
+input[type=datetime]{
+	width: 55%;
+	height: 50px;
+	font-size: 15px;
+	background: #E0E0E0;
+	color: #424242;
+	text-align: center;
+	border:none;
+	border-radius: 3px;
+	font-family: 'Helvetica Neue', Helvetica, sans-serif;
+	margin-bottom: 20px;
+}
+
 input[type=password]{
 	width: 55%;
 	height: 50px;
@@ -199,11 +212,32 @@ input[type=password]{
 	display:none;
 }
 
+.toevoegenForm {
+	position: absolute;
+	top: 60px;
+	width: 450px;
+	background: #fff;
+	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	display:none;
+}
+
 .dlgLogin {
 	cursor: pointer;
 }
 
 .dlgAanmelden {
+	cursor: pointer;
+}
+
+.dlgToevoegen {
+	cursor: pointer;
+}
+
+.dlgProfiel{
 	cursor: pointer;
 }
 
