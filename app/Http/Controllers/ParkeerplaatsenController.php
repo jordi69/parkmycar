@@ -39,16 +39,21 @@ class ParkeerplaatsenController extends Controller
     {
 
         //dd($request->all());
+        $request['BeschikbaarStartdatum'] = date('Y-m-d H:i:s',strtotime($request['BeschikbaarStartdatum']));
+        $request['BeschikbaarStarttijd']  = date('Y-m-d H:i:s', strtotime($request['BeschikbaarStarttijd']));
+        $request['BeschikbaarStoptijd']   = date('Y-m-d H:i:s', strtotime($request['BeschikbaarStoptijd']));
+
         DB::table('parkeerplaatsen')->insert([
             'adres' => $request['adres'],
             'latitude' => $request['latitude'],
             'longitude' => $request['longitude'],
             'Prijs' => $request['Prijs'],
-                'BeschikbaarStartdatum' => $request['BeschikbaarStartdatum'],
-                'BeschikbaarStarttijd' => $request['BeschikbaarStarttijd'],
-                'BeschikbaarStoptijd' => $request['BeschikbaarStoptijd']
-            ]);  
+            'BeschikbaarStartdatum' => $request['BeschikbaarStartdatum'],
+            'BeschikbaarStarttijd' => $request['BeschikbaarStarttijd'],
+            'BeschikbaarStoptijd' => $request['BeschikbaarStoptijd']
+        ]);  
 
+        return back();
         /*$parkeerplaats = new ParkeerplaatsenController;
         $parkeerplaats->adres =$request['adres'];
         $parkeerplaats->latitude =$request['latitude'];
@@ -86,19 +91,11 @@ class ParkeerplaatsenController extends Controller
                 'BeschikbaarStarttijd' => $request['BeschikbaarStarttijd'],
                 'BeschikbaarStoptijd' => $request['BeschikbaarStoptijd']
             ]);
-        ]);Parkeerplaats::create([
-                'adres' => $request['adres'],
-                'latitude' => $request['latitude'],
-                'longitude' => $request['longitude'],
-                'Prijs' => $request['Prijs'],
-                'BeschikbaarStartdatum' => $request['BeschikbaarStartdatum'],
-                'BeschikbaarStarttijd' => $request['BeschikbaarStarttijd'],
-                'BeschikbaarStoptijd' => $request['BeschikbaarStoptijd']
-            ]);*/
+        ])
 
 
 
-    return view('layouts/master');
+    
     }
 
     /**
