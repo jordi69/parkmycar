@@ -235,6 +235,13 @@ $(function(){
 <form method="POST" action="/parkeerplaats/store">
     {!! csrf_field() !!}
 
+     @if (count($errors))
+    <ul>
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+    </ul>
+    @endif
    <div>
         <input id="geocomplete" type="text" name="prkplstraat" value="{{ old('prkplstraat') }}" placeholder="Plaats">
     </div>

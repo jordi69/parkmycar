@@ -38,9 +38,10 @@ class ParkeerplaatsenController extends Controller
     {
          $validator = Validator::make($request->all(), [
             'prkplstraat' => 'required|max:255',
-            'prkplstraatnummer' => 'required',
-            'prkplgemeente' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
             'Prijs' => 'required', //max 2 cijfers na komme
+            'BeschikbaarStartdatum' => 'required'
             'BeschikbaarStarttijd' => 'required',
             'BeschikbaarStoptijd' => 'required'
 
