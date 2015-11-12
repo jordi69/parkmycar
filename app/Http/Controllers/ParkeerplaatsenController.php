@@ -96,7 +96,7 @@ class ParkeerplaatsenController extends Controller
 
 
     
-    }
+    
 
     /**
      * Display the specified resource.
@@ -104,6 +104,7 @@ class ParkeerplaatsenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    }
     public function show($id)
     {
         //
@@ -111,10 +112,10 @@ class ParkeerplaatsenController extends Controller
 
     public function search()
     {
-        //
-        /*$items = DB::table('####JUISTENAAM####')->get();*/
-
-        return view('parking.overzicht'/*, ['items' => $items]*/);
+        
+        $items = DB::table('parkeerplaatsen')->get();
+        //dd($items);
+        return view('parking.overzicht', ['items' => $items]);
     }
 
     /**

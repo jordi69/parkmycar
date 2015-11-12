@@ -149,7 +149,7 @@ $(function(){
 <body>
 <div class="searchbar">
 <div class="searchitems">
-<form method="POST" action="/zoekparkeerplaats">
+<form method="POST" action="Parkeerplaatsen/search">
     {!! csrf_field() !!}
     @if (count($errors))
     <ul>

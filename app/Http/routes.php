@@ -26,6 +26,6 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 
 Route::post('Parkeerplaatsen/store','ParkeerplaatsenController@store');
-Route::get('zoekparkeerplaats', 'ParkeerplaatsenController@Search');
+Route::post('Parkeerplaatsen/search', 'ParkeerplaatsenController@Search');
 
 
