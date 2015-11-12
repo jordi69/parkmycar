@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
 
 class ParkeerplaatsenController extends Controller
 {
@@ -37,9 +38,16 @@ class ParkeerplaatsenController extends Controller
     public function store(Request $request)
     {
 
-        dd($request->all());
-        $input =$request->all();
-        Parkeerplaats::create($input);  
+        //dd($request->all());
+        DB::table('parkeerplaatsen')->insert([
+            'adres' => $request['adres'],
+            'latitude' => $request['latitude'],
+            'longitude' => $request['longitude'],
+            'Prijs' => $request['Prijs'],
+                'BeschikbaarStartdatum' => $request['BeschikbaarStartdatum'],
+                'BeschikbaarStarttijd' => $request['BeschikbaarStarttijd'],
+                'BeschikbaarStoptijd' => $request['BeschikbaarStoptijd']
+            ]);  
 
         /*$parkeerplaats = new ParkeerplaatsenController;
         $parkeerplaats->adres =$request['adres'];
@@ -89,9 +97,8 @@ class ParkeerplaatsenController extends Controller
             ]);*/
 
 
-        Session::flash('message', 'Successfully created parkeerplaats!');
-        return Redirect::to('/');
 
+    return view('layouts/master');
     }
 
     /**
