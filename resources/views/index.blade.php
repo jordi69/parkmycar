@@ -8,14 +8,13 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="/js/geocomplete.js"></script>
 </head>
 <script>
 $(document).ready(function(){
 
   $('#datepicker').datepicker({ dateFormat: 'dd MM yy' });
+  $('#datepickertwee').datepicker({ dateFormat: 'dd MM yy' });
     //get language
   var langage = (navigator.language || navigator.browserLanguage).split('-')[0];
 
@@ -41,8 +40,8 @@ $('.dlgToevoegen').click(function(e){
     $(".toevoegenForm").fadeIn(100);
     $(".registerForm").fadeOut(100);
     $(".loginForm").fadeOut(100);
-    $('.overlay').fadeIn(100);
-    $('.toevoegenForm').css('z-index','99999');
+    //$('.overlay').fadeIn(100);
+    //$('.toevoegenForm').css('z-index','99999');
 });
 $('.cross').click(function(e){
     $(".registerForm").fadeOut(100);
@@ -74,9 +73,22 @@ $(function(){
           .bind("geocode:multiple", function(event, results){
             $.log("Multiple: " + results.length + " results found");
           });
+
+          $("#geocompletetwee").geocomplete(options)
+          .bind("geocode:result", function(event, result){
+            $("#latitude").val(result.geometry.location.lat());
+            $("#longitude").val(result.geometry.location.lng());
+          })
+          .bind("geocode:error", function(event, status){
+            $.log("ERROR: " + status);
+          })
+          .bind("geocode:multiple", function(event, results){
+            $.log("Multiple: " + results.length + " results found");
+          });
         
         $("#find").click(function(){
           $("#geocomplete").trigger("geocode");
+           $("#geocompletetwee").trigger("geocode");
         });
         
         $("#examples a").click(function(){
@@ -87,6 +99,8 @@ $(function(){
       });
 });
 </script>
+
+
 <header>
 	<div class="leftHeader">
 		<!-- VERHALEN -->
@@ -145,15 +159,26 @@ $(function(){
     </ul>
     @endif
     <div>
-        <input type="text" name="plaats" id="geocomplete" class="searchPlaats" placeholder="Waar wil je parkeren?" value="{{ old('voornaam') }}">
+        <input type="text" name="plaats" id="geocompletetwee" class="searchPlaats" placeholder="Waar wil je parkeren?" value="{{ old('voornaam') }}">
         <input type="text" name="tijd" id="datepicker" placeholder="Wanneer?"  class="searchTijd" value="{{ old('achternaam') }}">
         <input type="submit" value="ZOEKEN" id="searchButton">
         <input id="latitude" type="text" name="latitude" hidden="true">
         <input id="longitude" type="text" name="longitude" hidden="true">
     </div>
 </form>
+<div class="map_canvas"></div>
 </div>
 </div>
+	<div class="container">
+		<!-- <div class="top">
+    		<a href="/">Home</a>
+    		<a href="/auth/logout">Logout</a>
+    		<a href="/parkeerplaatsen/create">voeg parkeerplaats toe</a>
+		</div>
+
+    -->
+    @yield('content')
+	</div>
 </body>
 <div class="overlay">
 </div>
@@ -161,16 +186,9 @@ $(function(){
 <div class="cross">
  X
 </div>
-
 <form method="POST" action="/auth/register">
     {!! csrf_field() !!}
-    @if (count($errors))
-    <ul>
-            @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
-            @endforeach
-    </ul>
-    @endif
+
     <div>
         <input type="text" name="voornaam" placeholder="Voornaam" value="{{ old('voornaam') }}">
     </div>
@@ -208,16 +226,9 @@ $(function(){
 <div class="cross">
  X
 </div>
-
 <form method="POST" action="/auth/login">
     {!! csrf_field() !!}
-    @if (count($errors))
-        <ul>
-            @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
+
     <div>
         <input type="email" name="email" value="{{ old('email') }}" placeholder="E-mail">
     </div>
@@ -252,7 +263,7 @@ $(function(){
         <input type="text" name="Prijs" value="{{ old('Prijs') }}" placeholder="Prijs / uur">
     </div>
     <div>
-        <input type="datetime" id="datepicker" name="BeschikbaarStartdatum" value="{{ old('BeschikbaarStarttijd') }}" placeholder="Start Datum">
+        <input type="datetime" id="datepickertwee" name="BeschikbaarStartdatum" value="{{ old('BeschikbaarStarttijd') }}" placeholder="Start Datum">
     </div>
 
      <div>
