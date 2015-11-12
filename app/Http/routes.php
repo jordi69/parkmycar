@@ -24,7 +24,8 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
+
 Route::post('Parkeerplaatsen/store','ParkeerplaatsenController@store');
-//Route::resource('parkeerplaatsen', 'ParkeerplaatsenController');
-Route::post('zoekparkeerplaats', 'ParkeerplaatsenController@Search');
+Route::get('zoekparkeerplaats', 'ParkeerplaatsenController@Search');
+
 

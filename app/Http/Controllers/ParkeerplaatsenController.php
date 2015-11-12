@@ -112,6 +112,9 @@ class ParkeerplaatsenController extends Controller
     public function search()
     {
         //
+        /*$items = DB::table('####JUISTENAAM####')->get();*/
+
+        return view('parking.overzicht'/*, ['items' => $items]*/);
     }
 
     /**

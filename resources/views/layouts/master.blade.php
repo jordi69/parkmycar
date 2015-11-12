@@ -1,16 +1,17 @@
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Park My Car</title>
-	<link rel="stylesheet" href="/css/style.css">
-	<link href='http://fonts.googleapis.com/css?family=Righteous|Montserrat:700' rel='stylesheet' type='text/css'>
-  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+  <meta charset="UTF-8">
+  <title>Park My Car</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link href='http://fonts.googleapis.com/css?family=Righteous|Montserrat:700' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="/js/geocomplete.js"></script>
 </head>
-<div class="overlay">
 <script>
 $(document).ready(function(){
 
@@ -26,22 +27,34 @@ $('.dlgAanmelden').click(function(e){
     $(".registerForm").fadeIn(100);
     $(".loginForm").fadeOut(100);
     $(".toevoegenForm").fadeOut(100);
-
+    $('.overlay').fadeIn(100);
+    $('.registerForm').css('z-index','99999');
 });
 $('.dlgLogin').click(function(e){
     $(".loginForm").fadeIn(100);
     $(".registerForm").fadeOut(100);
     $(".toevoegenForm").fadeOut(100);
+    $('.overlay').fadeIn(100);
+    $('.loginForm').css('z-index','99999');
 });
 $('.dlgToevoegen').click(function(e){
     $(".toevoegenForm").fadeIn(100);
     $(".registerForm").fadeOut(100);
     $(".loginForm").fadeOut(100);
+    $('.overlay').fadeIn(100);
+    $('.toevoegenForm').css('z-index','99999');
 });
 $('.cross').click(function(e){
     $(".registerForm").fadeOut(100);
     $(".loginForm").fadeOut(100);
     $(".toevoegenForm").fadeOut(100);
+    $('.overlay').fadeOut(100);
+});
+$('.overlay').click(function(e){
+    $(".registerForm").fadeOut(100);
+    $(".loginForm").fadeOut(100);
+    $(".toevoegenForm").fadeOut(100);
+    $('.overlay').fadeOut(100);
 });
 
 $(function(){
@@ -66,26 +79,21 @@ $(function(){
           $("#geocomplete").trigger("geocode");
         });
         
-        $("#examples a").click(function(){
-          $("#geocomplete").val($(this).text()).trigger("geocode");
-          return false;
-        });
-        
       });
 });
 </script>
-<header>
-	<div class="leftHeader">
-		<!-- VERHALEN -->
-   		<div class="headerVerhalen">
-       		<a href="/verhalen">Verhalen</a>
-    	</div>
+<header class="secondpage">
+  <div class="leftHeader">
+    <!-- VERHALEN -->
+      <div class="headerVerhalen">
+          <a href="/verhalen">Verhalen</a>
+      </div>
 
-    	<!-- HELP -->
-   		<div class="headerHelp">
-       		<a href="/help">Help</a>
-    	</div>
-	</div>
+      <!-- HELP -->
+      <div class="headerHelp">
+          <a href="/help">Help</a>
+      </div>
+  </div>
 @if(Auth::check())
    <div class="rightHeader">
       <!-- INLOGGEN -->
@@ -100,58 +108,36 @@ $(function(){
     </div>
 @else
     <div class="rightHeader">
-    	<!-- INLOGGEN -->
-    	<div class="headerInloggen">
-       		<a class="dlgLogin">Inloggen</a>
-    	</div>
+      <!-- INLOGGEN -->
+      <div class="headerInloggen">
+          <a class="dlgLogin">Inloggen</a>
+      </div>
 
-    	<!-- AANMELDEN -->
-    	<div class="headerAanmelden">
-       		<a class="dlgAanmelden">Aanmelden</a>
-    	</div>
+      <!-- AANMELDEN -->
+      <div class="headerAanmelden">
+          <a class="dlgAanmelden">Aanmelden</a>
+      </div>
     </div>
 @endif
 
     <!-- TITLE -->
     <div class="logo">
        <h1>PARK MY CAR</h1>
-       <p>Vind gemakkelijk een parkeerplaats in de buurt.</p>
-       <button>HOE HET WERKT</button>
     </div>
 </header>
 <body>
-<div class="searchbar">
-<div class="searchitems">
-<form method="POST" action="/zoekparkeerplaats">
-    {!! csrf_field() !!}
-    @if (count($errors))
-    <ul>
-            @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
-            @endforeach
-    </ul>
-    @endif
-    <div>
-        <input type="text" name="plaats" id="geocomplete" class="searchPlaats" placeholder="Waar wil je parkeren?" value="{{ old('voornaam') }}">
-        <input type="text" onclick="this.type='time';" name="tijd" placeholder="Welk uur?"  class="searchTijd" value="{{ old('achternaam') }}">
-        <input type="submit" value="ZOEKEN" id="searchButton">
-        <input id="latitude" type="text" name="latitude" hidden="true">
-        <input id="longitude" type="text" name="longitude" hidden="true">
+  <div class="container">
+    <!-- <div class="top">
+        <a href="/">Home</a>
+        <a href="/auth/logout">Logout</a>
+        <a href="/parkeerplaatsen/create">voeg parkeerplaats toe</a>
     </div>
-</form>
-</div>
-</div>
-	<div class="container">
-		<!-- <div class="top">
-    		<a href="/">Home</a>
-    		<a href="/auth/logout">Logout</a>
-    		<a href="/parkeerplaatsen/create">voeg parkeerplaats toe</a>
-		</div>
 
     -->
     @yield('content')
-	</div>
+  </div>
 </body>
+<div class="overlay">
 </div>
 <div class="registerForm">
 <div class="cross">
