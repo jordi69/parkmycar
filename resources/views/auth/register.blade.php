@@ -4,38 +4,30 @@
     {!! csrf_field() !!}
 
     <div>
-        voornaam
-        <input type="text" name="voornaam" value="{{ old('voornaam') }}">
+        <input type="text" name="voornaam" placeholder="Voornaam" value="{{ old('voornaam') }}">
     </div>
     <div>
-        achternaam
-        <input type="text" name="achternaam" value="{{ old('achternaam') }}">
+        <input type="text" name="achternaam" placeholder="Achternaam" value="{{ old('achternaam') }}">
     </div>
     <div>
-        straat
-        <input type="text" name="straatnaam" value="{{ old('straatnaam') }}">
+        <input type="text" name="straatnaam" placeholder="Straat" value="{{ old('straatnaam') }}">
     </div>
     <div>
-        huisnummer
-        <input type="text" name="huisnummer" value="{{ old('huisnummer') }}">
+        <input type="text" name="huisnummer" placeholder="Huisnummer" value="{{ old('huisnummer') }}">
     </div>
     <div>
-        woonplaats
-        <input type="text" name="woonplaats" value="{{ old('woonplaats') }}">
+        <input type="text" name="woonplaats" placeholder="Woonplaats" value="{{ old('woonplaats') }}">
     </div>
     <div>
-        Email
-        <input type="email" name="email" value="{{ old('email') }}">
+        <input type="email" name="email" placeholder="E-mail" value="{{ old('email') }}">
     </div>
 
     <div>
-        Password
-        <input type="password" name="password">
+        <input type="password" placeholder="Wachtwoord" name="password">
     </div>
 
     <div>
-        Confirm Password
-        <input type="password" name="password_confirmation">
+        <input type="password" placeholder="Wachtwoord herhalen" name="password_confirmation">
     </div>
 
     <div>
