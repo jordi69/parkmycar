@@ -179,9 +179,9 @@ $(function(){
     -->
     @yield('content')
 	</div>
-</body>
-<div class="overlay">
+  <div class="overlay">
 </div>
+</body>
 <div class="registerForm">
 <div class="cross">
  X

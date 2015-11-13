@@ -22,6 +22,21 @@ header {
     background-position: fixed;
 }
 
+a {
+	display: block;
+ 	line-height: 60px;
+ 	text-decoration: none;
+ 	font-family: 'Helvetica', Arial, sans-serif;
+ 	font-size: 15px;
+ 	color: #FFFFFF;
+ 	margin-right: 30px;
+ 	font-weight: bold;
+}
+
+a:hover {
+	color: #E0E0E0;
+}
+
 .secondpage{
 	background-image: url('../images/top_background.jpg');
 	min-height: 60px;
@@ -105,13 +120,15 @@ header div {
 	margin-left: 30px;
 }
 
-f
-
 .overlay {
     background:rgba(0,0,0,0.5);
     display:none;
     width:100%; height:100%;
     position:absolute; top:0; left:0; z-index:99998;
+}
+
+.container {
+	height: 100%;
 }
 
 form {
