@@ -22,7 +22,7 @@ header {
     background-position: fixed;
 }
 
-a {
+header a {
 	display: block;
  	line-height: 60px;
  	text-decoration: none;
@@ -33,7 +33,7 @@ a {
  	font-weight: bold;
 }
 
-a:hover {
+header a:hover {
 	color: #E0E0E0;
 }
 
