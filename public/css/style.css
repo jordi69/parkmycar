@@ -127,10 +127,6 @@ header div {
     position:absolute; top:0; left:0; z-index:99998;
 }
 
-.container {
-	height: 100%;
-}
-
 form {
 	width: 450px;
 	text-align: center;
