@@ -75,7 +75,4 @@ class AuthController extends Controller
     {
         return view('auth/register');
     }
-
-    protected $redirectPath = '/';
-    protected $loginPath = '/';
 }

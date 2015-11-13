@@ -105,20 +105,7 @@ header div {
 	margin-left: 30px;
 }
 
-header a {
-	display: block;
- 	line-height: 60px;
- 	text-decoration: none;
- 	font-family: 'Helvetica', Arial, sans-serif;
- 	font-size: 15px;
- 	color: #FFFFFF;
- 	margin-right: 30px;
- 	font-weight: bold;
-}
-
-header a:hover {
-	color: #E0E0E0;
-}
+f
 
 .overlay {
     background:rgba(0,0,0,0.5);
