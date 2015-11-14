@@ -110,10 +110,19 @@ class ParkeerplaatsenController extends Controller
         //
     }
 
-    public function search()
+    public function search(Request $request)
     {
         
-        $items = DB::table('parkeerplaatsen')->get();
+        //dd($request->all());
+
+        $long = $request['longitude'];
+        $lat = $request['latitude'];
+
+        $request['tijd'] = date('Y-m-d H:i:s',strtotime($request['tijd']));
+
+        $items = DB::table('parkeerplaatsen')->where('BeschikbaarStartdatum', $request['tijd'])->get();
+
+        //$items = DB::table('parkeerplaatsen')->get();
         //dd($items);
         return view('parking.overzicht', ['items' => $items]);
     }

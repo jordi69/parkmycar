@@ -161,8 +161,8 @@ $(function(){
     </ul>
     @endif
     <div>
-        <input type="text" name="plaats" id="geocompletetwee" class="searchPlaats" placeholder="Waar wil je parkeren?" value="{{ old('voornaam') }}">
-        <input type="text" name="tijd" id="datepicker" placeholder="Wanneer?"  class="searchTijd" value="{{ old('achternaam') }}">
+        <input type="text" name="plaats" id="geocompletetwee" class="searchPlaats" placeholder="Waar wil je parkeren?" value="{{ old('plaats') }}">
+        <input type="text" name="tijd" id="datepicker" placeholder="Wanneer?"  class="searchTijd" value="{{ old('tijd') }}">
         <input type="submit" value="ZOEKEN" id="searchButton">
         <input id="latitude" type="text" name="latitude" hidden="true">
         <input id="longitude" type="text" name="longitude" hidden="true">
