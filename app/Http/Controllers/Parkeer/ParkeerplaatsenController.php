@@ -102,6 +102,7 @@ class ParkeerplaatsenController extends Controller
             ->orderBy("distance")
             ->setBindings([$latitude, $longitude, $latitude])
             ->where('BeschikbaarStartdatum', 'like', $tijd)
+            ->take(9)
             ->get();
 
 
