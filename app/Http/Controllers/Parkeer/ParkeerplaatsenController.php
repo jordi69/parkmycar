@@ -135,7 +135,7 @@ class ParkeerplaatsenController extends Controller
             ->having("distance", "<", $radius)
             ->orderBy("distance")
             ->setBindings([$latitude, $longitude, $latitude])
-            ->where('BeschikbaarStartdatum', $tijd)
+            ->where('BeschikbaarStartdatum', '<>', $tijd)
             ->get();
 
         //$items = DB::table('parkeerplaatsen')->get();
