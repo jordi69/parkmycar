@@ -86,14 +86,9 @@ $(function(){
 </script>
 <header class="secondpage">
   <div class="leftHeader">
-    <!-- VERHALEN -->
-      <div class="headerVerhalen">
-          <a href="/verhalen">Verhalen</a>
-      </div>
-
       <!-- HELP -->
       <div class="headerHelp">
-          <a href="/help">Help</a>
+          <a href="/#helpvideo">Help</a>
       </div>
   </div>
 @if(Auth::check())
@@ -129,13 +124,6 @@ $(function(){
 </header>
 <body>
   <div class="container">
-    <!-- <div class="top">
-        <a href="/">Home</a>
-        <a href="/auth/logout">Logout</a>
-        <a href="/parkeerplaatsen/create">voeg parkeerplaats toe</a>
-    </div>
-
-    -->
     @yield('content')
   </div>
 </body>

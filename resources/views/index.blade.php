@@ -42,8 +42,10 @@ $('.dlgToevoegen').click(function(e){
     $(".toevoegenForm").fadeIn(100);
     $(".registerForm").fadeOut(100);
     $(".loginForm").fadeOut(100);
-    //$('.overlay').fadeIn(100);
-    //$('.toevoegenForm').css('z-index','99999');
+    $('.overlay').fadeIn(100);
+    $('.toevoegenForm').css('z-index','99999');
+    $('.pac-container').css('z-index','99999');
+    $('#geocomplete').focus(); 
 });
 $('.cross').click(function(e){
     $(".registerForm").fadeOut(100);
@@ -105,14 +107,10 @@ $(function(){
 
 <header>
 	<div class="leftHeader">
-		<!-- VERHALEN -->
-   		<div class="headerVerhalen">
-       		<a href="/verhalen">Verhalen</a>
-    	</div>
 
     	<!-- HELP -->
    		<div class="headerHelp">
-       		<a href="/help">Help</a>
+       		<a href="/#helpvideo">Help</a>
     	</div>
 	</div>
 @if(Auth::check())
@@ -145,7 +143,7 @@ $(function(){
     <div class="logo">
        <h1>PARK MY CAR</h1>
        <p>Vind gemakkelijk een parkeerplaats in de buurt.</p>
-       <button>HOE HET WERKT</button>
+       <button onclick="location.href='/#helpvideo'">HOE HET WERKT</button>
     </div>
 </header>
 <body>
@@ -172,14 +170,9 @@ $(function(){
 </div>
 </div>
 	<div class="container">
-		<!-- <div class="top">
-    		<a href="/">Home</a>
-    		<a href="/auth/logout">Logout</a>
-    		<a href="/parkeerplaatsen/create">voeg parkeerplaats toe</a>
-		</div>
-
-    -->
-    @yield('content')
+      <div id="helpvideo" class="helpvideo">
+      <iframe src="https://player.vimeo.com/video/145610807?color=ff554c&title=0&byline=0&portrait=0" width="950" height="496" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
+      </div>
 	</div>
   <div class="overlay">
 </div>

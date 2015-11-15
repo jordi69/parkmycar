@@ -3,13 +3,14 @@ html, body  {
 	padding: 0;
 	margin: 0;
 	background-color: #EEEEEE;
-	overflow: hidden;
+	overflow: auto;
 }
 
 p {
 	color: #424242;
 	margin: 0;
 	font-family: 'Helvetica', Arial, sans-serif;
+	letter-spacing: 1px;
 }
 
 header {
@@ -31,6 +32,10 @@ header a {
  	color: #FFFFFF;
  	margin-right: 30px;
  	font-weight: bold;
+}
+
+.container {
+	width: 100%;
 }
 
 header a:hover {
@@ -339,4 +344,85 @@ form .formparkeren {
 
 span {
 	font-weight: bold;
+}
+
+.helpvideo {
+	margin: auto;
+	padding-top: 240px;
+	margin-top: -200px;
+	margin-bottom: 50px; 
+	text-align: center;
+}
+
+.profileinfo {
+	width: 500px;
+	height: 110px;
+	margin: auto;
+	margin-top: 40px;
+}
+
+.profileinfo .picture {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background-color: #4CAF50;
+	float: left;
+	margin-left: 100px;
+}
+
+.profileinfo .picture p {
+	line-height: 100px;
+	text-align: center;
+	color: #fff;
+	font-size: 30px;
+	text-transform: capitalize;
+}
+
+.profileinfo .profiletext p {
+	line-height: 100px;
+	font-size: 24px;
+	color: #424242;
+}
+
+.profileinfo .profiletext {
+	float: right;
+	margin-right: 100px;
+}
+
+.knoppen {
+	width: 660px;
+	height: 80px;
+	margin: auto;
+	margin-top: 40px;
+	text-align: center;
+}
+
+.knop {
+	width: 200px;
+	height: 80px;
+	background-color: #E0E0E0;
+	float:left;
+	border-radius: 5px;
+	margin: auto;
+	margin-left: 20px;
+}
+
+.knop p {
+	text-align: center;
+	color: #fff;
+	font-size: 20px;
+	line-height: 80px;
+}
+
+.knop:hover {
+	background-color: #EEEEEE;
+	cursor: pointer;
+}
+
+.infoknoppen {
+	margin-top: 30px;
+}
+
+.profileparkeer {
+	display: none;
 }

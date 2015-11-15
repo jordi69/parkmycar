@@ -17,7 +17,10 @@ class UserController extends Controller
 
     public function getProfile()
     {
+        $verhuurd = DB::table('parkeerplaatsen')->get();
+        $gehuurd = DB::table('parkeerplaatsen')->get();
+        $aanvragen = DB::table('parkeerplaatsen')->get();
 
-        return view('profile/profile');
+        return view('profile/profile' , ['gehuurd' => $gehuurd , 'verhuurd' => $verhuurd , 'aanvragen' => $aanvragen]);
     }
 }
