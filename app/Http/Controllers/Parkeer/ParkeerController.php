@@ -54,7 +54,7 @@ class ParkeerController extends Controller
         // save our duck
         $Parkeer->save();
 
-        $user = DB::table('users')->where('id','userid')->first();
+        $userobj = DB::table('users')->where('id', Input::get('userid'))->first();
 
         Mail::send('emails.aanvraag', ['user' => $userobj], function ($m) use ($userobj) {
             $m->to($userobj->email, $userobj->voornaam)->subject('Aanvraag parking!');
@@ -68,7 +68,7 @@ class ParkeerController extends Controller
     {
         //
 
-        DB::table('users')->join('parkeren', 'parkeren.huurderid', '=', 'users.id')->where('parkeren.prkplid', Input::get('parkeerid'))->first();
+        $userobj = DB::table('users')->join('parkeren', 'parkeren.huurderid', '=', 'users.id')->where('parkeren.prkplid', Input::get('parkeerid'))->first();
 
         Mail::send('emails.geaccepteerd', ['user' => $userobj], function ($m) use ($userobj) {
             $m->to($userobj->email, $userobj->voornaam)->subject('Parking geaccepteerd!');
