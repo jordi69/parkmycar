@@ -27,7 +27,7 @@
     	<br>
     	<p style="text-align:center;">Van <span style="font-weight: bold;">{{date('H:i', strtotime($item->BeschikbaarStarttijd))}}</span> tot <span style="font-weight: bold;">{{date('H:i', strtotime($item->BeschikbaarStoptijd))}}.</span></p>
     	<p style="text-align:center;">Prijs: <span style="font-weight: bold;">{{$item->Prijs}}</span> / uur.</p>
-    	<form style="width:100%;padding-top:5px;margin-top:0;" method="POST" action="/parkeren">
+    	<form style="width:100%;padding-top:5px;margin-top:0;" method="POST" action="/parkeer/store">
     	    {!! csrf_field() !!}
     		@if (count($errors))
         		<ul class="alert alert-info">
