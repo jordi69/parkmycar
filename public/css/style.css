@@ -330,3 +330,13 @@ input[type=time]::-webkit-inner-spin-button {
 .searchitems .div {
 	float:left;
 }
+
+form .formparkeren {
+	width: 100%;
+	text-align: center;
+	padding-top: 20px;
+}
+
+span {
+	font-weight: bold;
+}
