@@ -242,7 +242,7 @@ $(function(){
 <div class="cross">
  X
 </div>
-<form method="POST" action="/parkeerplaats/store">
+<form method="POST" action="/Parkeerplaatsen/store">
     {!! csrf_field() !!}
 
    <div>
