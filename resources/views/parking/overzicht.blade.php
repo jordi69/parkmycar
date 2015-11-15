@@ -28,6 +28,13 @@
     	<p style="text-align:center;">Van <span style="font-weight: bold;">{{date('H:i', strtotime($item->BeschikbaarStarttijd))}}</span> tot <span style="font-weight: bold;">{{date('H:i', strtotime($item->BeschikbaarStoptijd))}}.</span></p>
     	<form style="width:100%;padding-top:5px;margin-top:0;" method="POST" action="/parkeren">
     	    {!! csrf_field() !!}
+    		@if (count($errors))
+        		<ul class="alert alert-info">
+           		@foreach($errors->all() as $error)
+                	<li>{{ $error }}</li>
+            	@endforeach
+        		</ul>
+    		@endif
     		<input type="submit" value="PARKEREN">
     	</form>
     	</div>
