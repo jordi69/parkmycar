@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<div class="listparking">
+<div class="listparking" style="margin-top:20px;">
  	@foreach ($items as $item)
  	<script>
  	function initialize() {
