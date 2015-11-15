@@ -147,11 +147,11 @@ $(function(){
 <form method="POST" action="/auth/register">
     {!! csrf_field() !!}
     @if (count($errors))
-    <ul>
+        <ul class="alert alert-info">
             @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
+                <li>{{ $error }}</li>
             @endforeach
-    </ul>
+        </ul>
     @endif
     <div>
         <input type="text" name="voornaam" placeholder="Voornaam" value="{{ old('voornaam') }}">
@@ -194,7 +194,7 @@ $(function(){
 <form method="POST" action="/auth/login">
     {!! csrf_field() !!}
     @if (count($errors))
-        <ul>
+        <ul class="alert alert-info">
             @foreach($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
@@ -220,13 +220,12 @@ $(function(){
 </div>
 <form method="POST" action="Parkeerplaatsen/store">
     {!! csrf_field() !!}
-
-     @if (count($errors))
-    <ul>
+    @if (count($errors))
+        <ul class="alert alert-info">
             @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
+                <li>{{ $error }}</li>
             @endforeach
-    </ul>
+        </ul>
     @endif
    <div>
         <input id="geocomplete" type="text" name="adres" value="{{ old('adres') }}" placeholder="Plaats">
