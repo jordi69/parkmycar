@@ -43,6 +43,8 @@ $('.dlgToevoegen').click(function(e){
     $(".loginForm").fadeOut(100);
     $('.overlay').fadeIn(100);
     $('.toevoegenForm').css('z-index','99999');
+    $('.pac-container').css('z-index','99999');
+    $('#geocomplete').focus(); 
 });
 $('.cross').click(function(e){
     $(".registerForm").fadeOut(100);
@@ -103,7 +105,7 @@ $(function(){
 
       <!-- AANMELDEN -->
       <div class="headerAanmelden">
-          <a class="dlgProfiel">Mijn Profiel</a>
+          <a href="/profiel" class="dlgProfiel">Mijn Profiel</a>
       </div>
     </div>
 @else
@@ -122,7 +124,7 @@ $(function(){
 
     <!-- TITLE -->
     <div class="logo">
-      <a href="/"><h1 style="font-size: 24px;">PARK MY CAR</h1></a>
+      <a href="/"><h1 style="font-size: 28px;">PARK MY CAR</h1></a>
     </div>
 </header>
 <body>
@@ -137,8 +139,6 @@ $(function(){
     @yield('content')
   </div>
 </body>
-<div class="overlay">
-</div>
 <div class="registerForm">
 <div class="cross">
  X
@@ -255,5 +255,7 @@ $(function(){
 </form>
 
 <div class="map_canvas"></div>
+</div>
+<div class="overlay">
 </div>
 </html>

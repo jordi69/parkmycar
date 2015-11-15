@@ -22,10 +22,11 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
+Route::get('/profiel', 'User\UserController@getProfile');
+Route::post('auth/register', 'User\UserController@postRegister');
 
 
-Route::post('Parkeerplaatsen/store','ParkeerplaatsenController@store');
-Route::post('Parkeerplaatsen/search', 'ParkeerplaatsenController@Search');
+Route::post('Parkeerplaatsen/store','Parkeer\ParkeerplaatsenController@store');
+Route::post('Parkeerplaatsen/search', 'Parkeer\ParkeerplaatsenController@Search');
 
 

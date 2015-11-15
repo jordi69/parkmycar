@@ -124,7 +124,7 @@ $(function(){
 
       <!-- AANMELDEN -->
       <div class="headerAanmelden">
-          <a class="dlgProfiel">Mijn Profiel</a>
+          <a href="/profiel" class="dlgProfiel">Mijn Profiel</a>
       </div>
     </div>
 @else
