@@ -80,8 +80,8 @@ $(function(){
 
           $("#geocompletetwee").geocomplete(options)
           .bind("geocode:result", function(event, result){
-            $("#latitude").val(result.geometry.location.lat());
-            $("#longitude").val(result.geometry.location.lng());
+            $("#latitudetwee").val(result.geometry.location.lat());
+            $("#longitudetwee").val(result.geometry.location.lng());
           })
           .bind("geocode:error", function(event, status){
             $.log("ERROR: " + status);
@@ -153,7 +153,7 @@ $(function(){
 <body>
 <div class="searchbar">
 <div class="searchitems">
-<form method="POST" action="Parkeerplaatsen/search">
+<form method="POST" action="/Parkeerplaatsen/search">
     {!! csrf_field() !!}
     @if (count($errors))
     <ul>
@@ -166,8 +166,8 @@ $(function(){
         <input type="text" name="plaats" id="geocompletetwee" class="searchPlaats" placeholder="Waar wil je parkeren?" value="{{ old('plaats') }}">
         <input type="text" name="tijd" id="datepicker" placeholder="Wanneer?"  class="searchTijd" value="{{ old('tijd') }}">
         <input type="submit" value="ZOEKEN" id="searchButton">
-        <input id="latitude" type="text" name="latitude" hidden="true">
-        <input id="longitude" type="text" name="longitude" hidden="true">
+        <input id="latitudetwee" type="text" name="latitude" hidden="true">
+        <input id="longitudetwee" type="text" name="longitude" hidden="true">
     </div>
 </form>
 <div class="map_canvas"></div>
@@ -175,7 +175,7 @@ $(function(){
 </div>
 	<div class="container">
       <div id="helpvideo" class="helpvideo">
-      <iframe src="https://player.vimeo.com/video/145610807?color=ff554c&title=0&byline=0&portrait=0" width="950" height="496" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
+      <iframe src="https://player.vimeo.com/video/145801642?color=ff554c&title=0&byline=0&portrait=0" width="950" height="496" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
       </div>
 	</div>
   <div class="overlay">

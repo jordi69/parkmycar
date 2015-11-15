@@ -2,8 +2,6 @@
 @section('content')
 <script>
 $(document).ready(function(){
-$("#verhuurd").show();
-$("#verhalen").show();
 $("#gehuurd").show();
 $('#knopgehuurd').click(function(e){
     $("#gehuurd").show();
