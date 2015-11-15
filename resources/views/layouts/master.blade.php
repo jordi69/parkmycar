@@ -122,7 +122,7 @@ $(function(){
 
     <!-- TITLE -->
     <div class="logo">
-       <h1>PARK MY CAR</h1>
+      <a href="/"><h1 style="font-size: 24px;">PARK MY CAR</h1></a>
     </div>
 </header>
 <body>
