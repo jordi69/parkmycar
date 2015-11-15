@@ -182,7 +182,14 @@ $(function(){
  X
 </div>
 <form method="POST" action="/auth/register">
-    {!! csrf_field() !!}
+        {!! csrf_field() !!}
+    @if (count($errors))
+        <ul class="alert alert-info">
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
 
     <div>
         <input type="text" name="voornaam" placeholder="Voornaam" value="{{ old('voornaam') }}">
@@ -222,7 +229,14 @@ $(function(){
  X
 </div>
 <form method="POST" action="/auth/login">
-    {!! csrf_field() !!}
+        {!! csrf_field() !!}
+    @if (count($errors))
+        <ul class="alert alert-info">
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
 
     <div>
         <input type="email" name="email" value="{{ old('email') }}" placeholder="E-mail">
@@ -242,11 +256,17 @@ $(function(){
 <div class="cross">
  X
 </div>
-<form method="POST" action="/Parkeerplaatsen/store">
+<form method="POST" action="Parkeerplaatsen/store">
     {!! csrf_field() !!}
-
+    @if (count($errors))
+        <ul class="alert alert-info">
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
    <div>
-        <input id="geocomplete" type="text" name="prkplstraat" value="{{ old('prkplstraat') }}" placeholder="Plaats">
+        <input id="geocomplete" type="text" name="adres" value="{{ old('adres') }}" placeholder="Plaats">
     </div>
     <div>
         <input id="latitude" type="text" name="latitude" hidden="true">
@@ -258,7 +278,7 @@ $(function(){
         <input type="text" name="Prijs" value="{{ old('Prijs') }}" placeholder="Prijs / uur">
     </div>
     <div>
-        <input type="datetime" id="datepickertwee" name="BeschikbaarStartdatum" value="{{ old('BeschikbaarStarttijd') }}" placeholder="Start Datum">
+        <input type="datetime" id="datepicker" name="BeschikbaarStartdatum" value="{{ old('BeschikbaarStartdatum') }}" placeholder="Start Datum">
     </div>
 
      <div>
