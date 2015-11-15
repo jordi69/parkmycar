@@ -56,8 +56,8 @@ class ParkeerController extends Controller
 
         $user = DB::table('users')->where('id','userid')->first();
 
-        Mail::send('emails.aanvraag', ['user' => $user], function ($m) use ($user) {
-            $m->to($user->email, $user->voornaam)->subject('Aanvraag parking!');
+        Mail::send('emails.aanvraag', ['user' => $userobj], function ($m) use ($userobj) {
+            $m->to($userobj->email, $userobj->voornaam)->subject('Aanvraag parking!');
             $m->from('admin@parkmycar.com', 'Admin');
         });
 
@@ -70,8 +70,8 @@ class ParkeerController extends Controller
 
         DB::table('users')->join('parkeren', 'parkeren.huurderid', '=', 'users.id')->where('parkeren.prkplid', Input::get('parkeerid'))->first();
 
-        Mail::send('emails.geaccepteerd', ['user' => $user], function ($m) use ($user) {
-            $m->to($user->email, $user->voornaam)->subject('Parking geaccepteerd!');
+        Mail::send('emails.geaccepteerd', ['user' => $userobj], function ($m) use ($userobj) {
+            $m->to($userobj->email, $userobj->voornaam)->subject('Parking geaccepteerd!');
             $m->from('admin@parkmycar.com', 'Admin');
         });
 
