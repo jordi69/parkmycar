@@ -2,7 +2,9 @@
 @section('content')
 <script>
 $(document).ready(function(){
-        $("#gehuurd").show();
+$("#verhuurd").show();
+$("#verhalen").show();
+$("#gehuurd").show();
 $('#knopgehuurd').click(function(e){
     $("#gehuurd").show();
     $("#verhalen").hide();
