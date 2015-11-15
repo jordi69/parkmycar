@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Parkeer;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class parkeercontroller extends Controller
+class ParkeerController extends Controller
 {
     /**
      * Display a listing of the resource.

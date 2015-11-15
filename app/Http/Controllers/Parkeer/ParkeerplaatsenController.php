@@ -118,10 +118,7 @@ class ParkeerplaatsenController extends Controller
 
         $longitude = $request['longitude'];
         $latitude = $request['latitude'];
-        $tijd = $request['tijd'];
-        $radius ="50";
-
-        $request['tijd'] = date('Y-m-d H:i:s',strtotime($request['tijd'])); 
+        $tijd = date('Y-m-d',strtotime($request['tijd']));
         $radius ="50";
 
         $items = Parkeerplaats::select(
