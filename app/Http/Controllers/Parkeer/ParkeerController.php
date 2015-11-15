@@ -68,7 +68,7 @@ class ParkeerController extends Controller
     {
         //
 
-        $userobj = DB::table('users')->join('parkeren', 'parkeren.huurderid', '=', 'users.id')->where('parkeren.prkplid', Input::get('parkeerid'))->first();
+        $userobj = DB::table('users')->join('parkeren', 'parkeren.huurderid', '=', 'users.id')->where('parkeren.parkeerplaatsid', Input::get('parkeerid'))->first();
 
         Mail::send('emails.geaccepteerd', ['user' => $userobj], function ($m) use ($userobj) {
             $m->to($userobj->email, $userobj->voornaam)->subject('Parking geaccepteerd!');
@@ -77,7 +77,12 @@ class ParkeerController extends Controller
 
         DB::table('parkeren')->where('parkeerplaatsid', Input::get('parkeerid'))->update(['confirmed' => 1]);
 
-        return view('profile/profile');
+        $user = Auth::user()->id;
+        $verhuurd = DB::table('parkeerplaatsen')->join('parkeren', 'parkeren.parkeerplaatsid', '=', 'parkeerplaatsen.prkplid')->where('parkeren.verhuurderid', $user)->orderBy('parkeren.created_at','desc')->where('parkeren.confirmed','1')->take(9)->get();
+        $gehuurd = DB::table('parkeerplaatsen')->join('parkeren', 'parkeren.parkeerplaatsid', '=', 'parkeerplaatsen.prkplid')->where('parkeren.huurderid', $user)->orderBy('parkeren.created_at','desc')->where('parkeren.confirmed','1')->take(9)->get();
+        $aanvragen = DB::table('parkeerplaatsen')->join('parkeren', 'parkeren.parkeerplaatsid', '=', 'parkeerplaatsen.prkplid')->where('parkeren.verhuurderid', $user)->orderBy('parkeren.created_at','desc')->where('parkeren.confirmed','0')->take(9)->get();
+
+        return view('profile/profile' , ['gehuurd' => $gehuurd , 'verhuurd' => $verhuurd , 'aanvragen' => $aanvragen]);
     }
 
     /**
