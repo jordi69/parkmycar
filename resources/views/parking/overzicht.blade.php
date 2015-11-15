@@ -4,7 +4,7 @@
  	@foreach ($items as $item)
  	<script>
  	function initialize() {
-    	var mapCanvas = document.getElementById('map');
+    	var mapCanvas = document.getElementById('map{{$item->prkplid}}');
     	var myLatlng = new google.maps.LatLng({{$item->latitude}}, {{$item->longitude}});
         var mapOptions = {
           center: myLatlng,
@@ -22,7 +22,7 @@
  	</script>
  	<div class="listpark col-sm-4">
  	<br>
-    	<div id="map" style="width:100%;height:280px;"></div>
+    	<div id="map{{$item->prkplid}}" style="width:100%;height:280px;"></div>
     	<div class="info col-sm-12">
     	<br>
     	<p style="text-align:center;">Van <span style="font-weight: bold;">{{date('H:i', strtotime($item->BeschikbaarStarttijd))}}</span> tot <span style="font-weight: bold;">{{date('H:i', strtotime($item->BeschikbaarStoptijd))}}.</span></p>
