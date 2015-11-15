@@ -278,7 +278,7 @@ $(function(){
         <input type="text" name="Prijs" value="{{ old('Prijs') }}" placeholder="Prijs / uur">
     </div>
     <div>
-        <input type="datetime" id="datepicker" name="BeschikbaarStartdatum" value="{{ old('BeschikbaarStartdatum') }}" placeholder="Start Datum">
+        <input type="datetime" id="datepickertwee" name="BeschikbaarStartdatum" value="{{ old('BeschikbaarStartdatum') }}" placeholder="Start Datum">
     </div>
 
      <div>
