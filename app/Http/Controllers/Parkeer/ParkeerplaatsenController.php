@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Parkeerplaats;
+use Auth;
+
 
 class ParkeerplaatsenController extends Controller
 {
@@ -62,10 +64,10 @@ class ParkeerplaatsenController extends Controller
             'BeschikbaarStartdatum' => $request['BeschikbaarStartdatum'],
             'BeschikbaarStarttijd' => $request['BeschikbaarStarttijd'],
             'BeschikbaarStoptijd' => $request['BeschikbaarStoptijd'],
-            'userid' => //userid van authenticated user
+            'userid' => Auth::user()->id //userid van authenticated user
             ]);
         
-        return back();
+        return view('index');
     }
     /**
      * Display the specified resource.

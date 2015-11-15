@@ -102,6 +102,11 @@ $(function(){
       <div class="headerAanmelden">
           <a href="/profiel" class="dlgProfiel">Mijn Profiel</a>
       </div>
+
+      <!-- LOGOUT -->
+      <div class="headerAanmelden">
+        <a href="/logout" class="dlgProfiel">Logout</a>
+        </div>
     </div>
 @else
     <div class="rightHeader">
@@ -206,7 +211,7 @@ $(function(){
 <div class="cross">
  X
 </div>
-<form method="POST" action="Parkeerplaatsen/store">
+<form method="POST" action="/Parkeerplaatsen/store">
     {!! csrf_field() !!}
     @if (count($errors))
         <ul class="alert alert-info">

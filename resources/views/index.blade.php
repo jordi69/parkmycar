@@ -124,6 +124,10 @@ $(function(){
       <div class="headerAanmelden">
           <a href="/profiel" class="dlgProfiel">Mijn Profiel</a>
       </div>
+
+      <div class="headerAanmelden">
+        <a href="/logout" class="dlgProfiel">Logout</a>
+        </div>
     </div>
 @else
     <div class="rightHeader">

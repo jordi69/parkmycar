@@ -36,6 +36,13 @@
             	@endforeach
         		</ul>
     		@endif
+
+    		<div>
+        		<input id="parkeerid" type="text" value="{{$item->prkplid}}" name="parkeerid" hidden="true">
+    		</div>
+    		<div>
+        		<input id="userid" type="text" value="{{$item->userid}}" name="userid" hidden="true">
+    		</div>
     		<input type="submit" value="PARKEREN">
     	</form>
     	</div>

@@ -23,12 +23,14 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::get('/profiel', 'User\UserController@getProfile');
+Route::get('/logout', 'User\UserController@getLogout');
 Route::post('auth/register', 'User\UserController@postRegister');
 
 
 Route::post('Parkeerplaatsen/store','Parkeer\ParkeerplaatsenController@store');
 Route::post('Parkeerplaatsen/search', 'Parkeer\ParkeerplaatsenController@Search');
 
-Route::post('parkeer/store','Parkeer/ParkeerController@store');
+Route::post('parkeer/store','Parkeer\ParkeerController@store');
+Route::post('parkeer/accept','Parkeer\ParkeerController@accept');
 
 

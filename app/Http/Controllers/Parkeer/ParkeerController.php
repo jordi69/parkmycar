@@ -5,6 +5,14 @@ namespace App\Http\Controllers\Parkeer;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Parkeer;
+use Auth;
+use Input;
+use Validator;
+use Redirect;
+use Session;
+use DB;
+use Mail;
 
 class ParkeerController extends Controller
 {
@@ -37,7 +45,39 @@ class ParkeerController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
-        return back();
+
+        $Parkeer = new Parkeer;
+        $Parkeer->verhuurderid     = Input::get('userid');
+        $Parkeer->huurderid    = Auth::user()->id;
+        $Parkeer->parkeerplaatsid = Input::get('parkeerid');
+
+        // save our duck
+        $Parkeer->save();
+
+        $user = DB::table('users')->where('id','userid')->first();
+
+        Mail::send('emails.aanvraag', ['user' => $user], function ($m) use ($user) {
+            $m->to($user->email, $user->voornaam)->subject('Aanvraag parking!');
+            $m->from('admin@parkmycar.com', 'Admin');
+        });
+
+        return view('index');
+    }
+
+    public function accept()
+    {
+        //
+
+        DB::table('users')->join('parkeren', 'parkeren.huurderid', '=', 'users.id')->where('parkeren.prkplid', Input::get('parkeerid'))->first();
+
+        Mail::send('emails.geaccepteerd', ['user' => $user], function ($m) use ($user) {
+            $m->to($user->email, $user->voornaam)->subject('Parking geaccepteerd!');
+            $m->from('admin@parkmycar.com', 'Admin');
+        });
+
+        DB::table('parkeren')->where('parkeerplaatsid', Input::get('parkeerid'))->update(['confirmed' => 1]);
+
+        return view('profile/profile');
     }
 
     /**

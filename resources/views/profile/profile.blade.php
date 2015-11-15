@@ -72,17 +72,6 @@ $('#knopverhalen').click(function(e){
         <br>
         <p style="text-align:center;">Van <span style="font-weight: bold;">{{date('H:i', strtotime($item->BeschikbaarStarttijd))}}</span> tot <span style="font-weight: bold;">{{date('H:i', strtotime($item->BeschikbaarStoptijd))}}.</span></p>
         <p style="text-align:center;">Prijs: <span style="font-weight: bold;">{{$item->Prijs}}</span> / uur.</p>
-        <form style="width:100%;padding-top:5px;margin-top:0;" method="POST" action="/parkeren">
-            {!! csrf_field() !!}
-            @if (count($errors))
-                <ul class="alert alert-info">
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-                </ul>
-            @endif
-            <input type="submit" value="PARKEREN">
-        </form>
         </div>
     </div>
     @endforeach
@@ -116,17 +105,6 @@ $('#knopverhalen').click(function(e){
         <br>
         <p style="text-align:center;">Van <span style="font-weight: bold;">{{date('H:i', strtotime($item->BeschikbaarStarttijd))}}</span> tot <span style="font-weight: bold;">{{date('H:i', strtotime($item->BeschikbaarStoptijd))}}.</span></p>
         <p style="text-align:center;">Prijs: <span style="font-weight: bold;">{{$item->Prijs}}</span> / uur.</p>
-        <form style="width:100%;padding-top:5px;margin-top:0;" method="POST" action="/parkeren">
-            {!! csrf_field() !!}
-            @if (count($errors))
-                <ul class="alert alert-info">
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-                </ul>
-            @endif
-            <input type="submit" value="PARKEREN">
-        </form>
         </div>
     </div>
     @endforeach
@@ -158,8 +136,8 @@ $('#knopverhalen').click(function(e){
         <div id="mapg{{$item->prkplid}}" style="width:100%;height:280px;"></div>
         <div class="info col-sm-12">
         <br>
-        <p style="text-align:center;">Door: <span style="font-weight: bold;">{{$item->adres}}</span></p>
-        <form style="width:100%;padding-top:5px;margin-top:0;" method="POST" action="/accepteren">
+        <p style="text-align:center;">Door: <span style="font-weight: bold;">Laurens</span></p>
+        <form style="width:100%;padding-top:5px;margin-top:0;" method="POST" action="parkeer/accept">
             {!! csrf_field() !!}
             @if (count($errors))
                 <ul class="alert alert-info">
@@ -168,6 +146,9 @@ $('#knopverhalen').click(function(e){
                 @endforeach
                 </ul>
             @endif
+            <div>
+                <input id="parkeerid" type="text" value="{{$item->prkplid}}" name="parkeerid" hidden="true">
+            </div>
             <input type="submit" value="ACCEPTEREN">
         </form>
         </div>
