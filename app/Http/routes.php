@@ -29,6 +29,6 @@ Route::post('auth/register', 'User\UserController@postRegister');
 Route::post('Parkeerplaatsen/store','Parkeer\ParkeerplaatsenController@store');
 Route::post('Parkeerplaatsen/search', 'Parkeer\ParkeerplaatsenController@Search');
 
-Route::post('parkeer/store','parkeercontroller@store');
+Route::post('parkeer/store','Parkeer/ParkeerController@store');
 
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Parkeerplaats;
 
 class ParkeerplaatsenController extends Controller
 {
@@ -82,12 +83,24 @@ class ParkeerplaatsenController extends Controller
         
         //dd($request->all());
 
-        $long = $request['longitude'];
-        $lat = $request['latitude'];
+        $longitude = $request['longitude'];
+        $latitude = $request['latitude'];
+        $tijd = date('Y-m-d',strtotime($request['tijd']));
+        $radius ="50";
 
-        $request['tijd'] = date('Y-m-d H:i:s',strtotime($request['tijd']));
-
-        $items = DB::table('parkeerplaatsen')->where('BeschikbaarStartdatum', $request['tijd'])->get();
+        $items = Parkeerplaats::select(
+            DB::raw("*,
+                          ( 6371 * acos( cos( radians(?) ) *
+                            cos( radians( latitude ) )
+                            * cos( radians( longitude ) - radians(?)
+                            ) + sin( radians(?) ) *
+                            sin( radians( latitude ) ) )
+                          ) AS distance"))
+            ->having("distance", "<", $radius)
+            ->orderBy("distance")
+            ->setBindings([$latitude, $longitude, $latitude])
+            ->where('BeschikbaarStartdatum', 'like', $tijd)
+            ->get();
 
 
         //dd($items);
